@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Dev_Mobile</string>
-    <string name ="name">%1$s</string>
+    <string name="name">%1$s</string>
     <string name="password">%1$s</string>
     <string name="pas">%1$d</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

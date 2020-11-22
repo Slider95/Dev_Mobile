@@ -42,7 +42,7 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
         TextView TextView = (TextView) findViewById(R.id.name);
         steps = findViewById(R.id.steps);
 
-        TextView.setText(name);
+        TextView.setText("Hello "+name);
 
         sensor = (SensorManager) getSystemService(SENSOR_SERVICE);
     }
@@ -57,9 +57,9 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-    if(running){
-        steps.setText(String.valueOf(event.values[0]));
-    }
+        if(running){
+            steps.setText(""+String.valueOf(event.values[0]));
+        }
     }
 
     @Override
@@ -89,5 +89,9 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+    public void MapsOnClick(View view){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
     }
 }
