@@ -7,12 +7,15 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,6 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private TextView speed;
 
     private GoogleMap mMap;
 
@@ -41,6 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        speed = findViewById(R.id.speed);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -54,18 +59,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Acquire a reference to the system Location Manager
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
+
+
         // Define a listener that responds to location updates
         locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
                 // Called when a new location is found by the location provider
                 Log.d(TAG, "Location changed");
-                Toast.makeText(getApplicationContext(), "Location changed, updating map...",
-                        Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "Location changed, updating map...",
+                 //       Toast.LENGTH_SHORT).show();
                 mLocation = location;
                 if (mMap != null) {
                     updateMap();
                 }
+                if (location.hasSpeed()) {
+                    speed.setText(location.getSpeed() + " km/h");
+                } else {
+                    speed.setText("0 km/h");
+                }
             }
+
 
             public void onStatusChanged(String provider, int status, Bundle extras) {}
 
