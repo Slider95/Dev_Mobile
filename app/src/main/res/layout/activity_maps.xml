@@ -14,20 +14,20 @@ tools:context=".MapsActivity">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MapsActivity"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="-90dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="148dp"
-        android:layout_height="56dp"
+        android:layout_width="162dp"
+        android:layout_height="73dp"
         android:src="@android:drawable/screen_background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
+        app:layout_constraintVertical_bias="0.974" />
 
     <TextView
         android:id="@+id/speed"
@@ -38,10 +38,24 @@ tools:context=".MapsActivity">
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintHorizontal_bias="0.779"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Still"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.673" />
 
     <TextView
         android:id="@+id/textView4"
@@ -51,7 +65,7 @@ tools:context=".MapsActivity">
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.805"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />

@@ -7,26 +7,26 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class SecondActivity extends AppCompatActivity implements SensorEventListener {
+public class SecondActivity extends AppCompatActivity implements SensorEventListener, CompoundButton.OnCheckedChangeListener {
     SensorManager sensor;
     TextView steps;
+    CheckBox toggleSteps;
+    Sensor stepCounter;
     boolean running = false;
+    public static String TAG = "SecondActivity";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,8 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
                 requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, 1);
             }
         }
-
+        toggleSteps = findViewById(R.id.toggleSteps);
+        toggleSteps.setOnCheckedChangeListener(this::onCheckedChanged);
         String name = intent.getStringExtra(MainActivity.NAME);
 
         TextView TextView = (TextView) findViewById(R.id.name);
@@ -72,10 +73,10 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
     protected void onResume() {
         super.onResume();
         running = true;
-        Sensor stepCounter = sensor.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        stepCounter = sensor.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         PackageManager pm = getPackageManager();
         if (!(pm.hasSystemFeature(PackageManager.FEATURE_SENSOR_STEP_COUNTER))) {
-            Toast.makeText(this, "Your device doesn't include a step sensor", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Your device doesn't include a step sensor", Toast.LENGTH_SHORT).show();
         }
         else {
             if (stepCounter != null) {
@@ -102,6 +103,16 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
-
+    @Override
+    public void onCheckedChanged(CompoundButton toggleSteps, //not working ???
+                                 boolean isChecked) {
+        Log.d(TAG, "Checkbox changed");
+        if (isChecked && stepCounter != null) {
+            sensor.registerListener(this, stepCounter,
+                    SensorManager.SENSOR_DELAY_NORMAL);
+        } else {
+            sensor.unregisterListener(this);
+        }
+    }
 
 }

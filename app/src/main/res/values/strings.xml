@@ -4,5 +4,6 @@
     <string name="password">%1$s</string>
     <string name="pas">%1$d</string>
     <string name="speed">%1$s</string>
+    <string name="move">%1$s</string>
     <string name="title_activity_maps">Map</string>
 </resources>

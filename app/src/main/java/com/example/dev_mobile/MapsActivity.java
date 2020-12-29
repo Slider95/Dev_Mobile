@@ -38,7 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private LocationListener locationListener;
     private TextView speed;
-
+    private TextView move;
     private GoogleMap mMap;
 
     @Override
@@ -46,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         speed = findViewById(R.id.speed);
+        move = findViewById(R.id.move);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -74,6 +75,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 if (location.hasSpeed()) {
                     speed.setText(location.getSpeed() + " km/h");
+                    if(location.getSpeed() <= 0){
+                        move.setText("Still");
+                    }
+                    else if(location.getSpeed() <= 8){
+                        move.setText("Walking");
+                    }
+                    else if(location.getSpeed() <= 25){
+                        move.setText("Running");
+                    }
+                    else{
+                        move.setText("In a vehicule");
+                    }
                 } else {
                     speed.setText("0 km/h");
                 }
