@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Dev_Mobile</string>
-    <string name="name">%1$s</string>
-    <string name="password">%1$s</string>
-    <string name="pas">%1$d</string>
+    <string name="weight">%2$.1f.</string>
+    <string name="height">%2$.1f.</string>
+    <string name="gender">%1$s</string>
+    <string name="steps">%1$d</string>
+    <string name="kms">%1$d</string>
+    <string name="kcal">%1$d</string>
     <string name="speed">%1$s</string>
     <string name="move">%1$s</string>
     <string name="title_activity_maps">Map</string>
