@@ -110,9 +110,9 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
         if (running) {
             steps.setText("" + String.valueOf(event.values[0]));
             Double v = (stepLength * event.values[0])/100000;
-            kms.setText(v + " kms");
+            kms.setText(String.format("%.2f", v) + " kms");
             Double v2 = v * Double.valueOf(weight);
-            kcal.setText(v2 + "Kcal");
+            kcal.setText(String.format("%.2f", v2) + "Kcal");
         }
     }
 
