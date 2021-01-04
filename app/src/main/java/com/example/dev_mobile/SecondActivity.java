@@ -114,7 +114,6 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Toast.makeText(this, "pas", Toast.LENGTH_SHORT).show();
         if (running) {
             steps.setText("" + String.valueOf(event.values[0]));
             Double v = (stepLength * event.values[0])/100000;
