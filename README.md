@@ -8,13 +8,16 @@ There is 3 activities :
 
 List of sensor :
 -Step sensor
--accelerometer
--Position sensor
+-GPS sensor
 
 List of intent :
 -intent for communicate between the first activity and the second
 -intent between the second activitiy and the localisation activity
 
+Background service :
+- Step sensor registered work in the background
+
+
   Group members name and email:
   -Paul Gasquet, email: paul.gasquet@gmail.com
-  -Yohann SOURIAC, email:
+  -Yohann SOURIAC, email: y.souriac@gmail.com

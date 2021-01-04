@@ -104,13 +104,6 @@ public class SecondActivity extends AppCompatActivity implements SensorEventList
         };
     }
 
-    public void submit(View view) {
-// Create an intent for the third activity
-        Intent intent = new Intent(this, ThirdActivity.class);
-
-// Start the activity
-        startActivity(intent);
-    }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
